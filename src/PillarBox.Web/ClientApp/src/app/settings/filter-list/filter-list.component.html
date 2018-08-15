@@ -1,0 +1,29 @@
+
+<div class="alert alert-danger">Filtering UI not yet implemented. This is just a mockup</div>
+
+<div class="form-group col-md-6">
+    <a class="btn btn-success" routerLink="filter/new">
+      <i class="fa fa-plus"></i> Add</a>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Pattern</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr routerLink="filter/test">
+        <td>To me</td>
+        <td>To = thom@*</td>
+        <td>Forward</td>
+      </tr>
+      <tr>
+        <td>Internal</td>
+        <td>CLIENT_IP = 127.0.0.1</td>
+        <td>WebHook</td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,25 @@
+<ng-template #connection>
+    <div class="modal-header">
+        <h4 class="modal-title">Connection Error</h4>
+    </div>
+    <div class="modal-body">
+        <p>Check that the PillarBox server is running and refresh this page.</p>
+    </div>
+</ng-template>
+<div class="container-fluid">
+    <div class="topbar">
+        <app-navigation></app-navigation>
+    </div>
+    <div class="lower">
+        <div class="sidebar">
+            <app-inboxes></app-inboxes>
+        </div>
+        <div class="maincontent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<ng-template confirm>
+    <confirm-modal-component></confirm-modal-component>
+</ng-template>

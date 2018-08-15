@@ -1,0 +1,38 @@
+<div class="nav-section faves">
+  <h5><i class="fa fa-star"></i> My Faves</h5>
+  <ul class="list-group" [@inboxAddRemove]="starredInboxes(inboxes).length"  *ngIf="starredInboxes(inboxes).length">
+    <li *ngFor="let item of starredInboxes(inboxes)" class="list-group-item">
+      <div class="inboxItem" routerLink="inbox/{{item.inboxId}}">
+        <a>{{item.fullPath}}</a>
+        <span (click)="toggleStar(item); $event.stopPropagation();" class="star-toggle fa fa-star float-right ml-2" [ngClass]="{'starred':item.starred}"></span>
+        <span class="badge badge-pill float-right">{{item.countAll}}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="nav-section inboxes">
+  <h5><i class="fa fa-inbox"></i> All Inboxes</h5>
+  <ul class="list-group" [@inboxAddRemove]="inboxes.length" *ngIf="inboxes.length">
+    <ng-template #recursiveList let-list>
+      <li *ngFor="let item of list" class="list-group-item">
+        <div class="inboxItem" routerLink="inbox/{{item.inboxId}}">
+          <a class="collapser fa"
+            [ngClass]="{
+              'fa-inbox': !item.children || item.children.length == 0,
+              'fa-folder-open':item.children && item.children.length > 0 && isOpen[item.inboxId],
+              'fa-folder':item.children && item.children.length > 0 && !isOpen[item.inboxId]}"
+            (click)="isOpen[item.inboxId] = !isOpen[item.inboxId]; $event.stopPropagation();"></a>
+          <a class="inboxlink">{{item.inboxName}}</a>
+          <span (click)="toggleStar(item); $event.stopPropagation();" class="star-toggle fa fa-star float-right ml-2" [ngClass]="{'starred':item.starred}"></span>
+          <span class="badge badge-pill float-right">{{item.countAll}}</span>
+        </div>
+        <div class="collapsible" *ngIf="item.children && item.children.length > 0" [@openClose]="isOpen[item.inboxId]==true">
+          <ul class="list-group">
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+          </ul>
+        </div>
+      </li>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: inboxes }"></ng-container>
+  </ul>
+</div>

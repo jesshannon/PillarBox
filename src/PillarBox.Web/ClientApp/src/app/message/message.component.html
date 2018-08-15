@@ -1,0 +1,90 @@
+<div class="message">
+  <div class="top">
+    <div class="toolbar">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-secondary" id="screenSizeMenu" ngbDropdownToggle><i class="fa fa-arrows-h"></i> Screen Width</button>
+        <div ngbDropdownMenu aria-labelledby="screenSizeMenu">
+          <button class="dropdown-item" (click)="width=99999">Full Width</button>
+          <button class="dropdown-item" (click)="width=320">320 pixels</button>
+          <button class="dropdown-item" (click)="width=400">400 pixels</button>
+          <button class="dropdown-item" (click)="width=600">600 pixels</button>
+        </div>
+      </div>
+
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-secondary" id="clientMenu" ngbDropdownToggle><i class="fa fa-desktop"></i> Client</button>
+        <div ngbDropdownMenu aria-labelledby="clientMenu">
+          <button class="dropdown-item">Standard Client</button>
+          <button class="dropdown-item">iPhone Mail</button>
+          <button class="dropdown-item">Gmail Web</button>
+          <button class="dropdown-item">Outlook 2007-16</button>
+        </div>
+      </div>
+
+      <div class="btn-group btn-group-toggle">
+        <label class="btn-secondary" ngbButtonLabel>
+          <input type="checkbox" ngbButton (click)="updatePreview()" [(ngModel)]="showImages"><i class="fa fa-image"></i> {{showImages ? "Hide Images" : "Show Images"}}
+        </label>
+      </div>
+
+      <button type="button" class="btn btn-secondary" [ngClass]="{'active':showingHtml}" (click)="toggleViewHtml()"><i class="fa fa-code"></i> View HTML</button>
+      <button type="button" class="btn btn-secondary" [ngClass]="{'active':showingOriginal}" (click)="toggleViewOriginal()"><i class="fa fa-file"></i> View Original</button>
+      <button type="button" class="btn btn-secondary" (click)="openModal(forwardModal)"><i class="fa fa-share"></i> Forward</button>
+      <button type="button" class="btn btn-danger float-right" (click)="delete()"><i class="fa fa-trash"></i> Delete</button>
+
+    </div>
+
+    <div class="headers" *ngIf="messageDetails != null">
+      <dl class="row">
+        <dt class="col-sm-2 text-right">From</dt>
+        <dd class="col-sm-10">{{messageDetails.from}}</dd>
+        <dt class="col-sm-2 text-right">To</dt>
+        <dd class="col-sm-10">{{messageDetails.to}}</dd>
+        <dt class="col-sm-2 text-right">Date</dt>
+        <dd class="col-sm-10">{{messageDetails.dateSent | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}</dd>
+        <dt class="col-sm-2 text-right">Subject</dt>
+        <dd class="col-sm-10">{{messageDetails.subject}}</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="previewContainer h-100">
+    <iframe [@previewWidth]="width" [style.width]="width>10000?'100%':(width + 'px')" frameborder="0" class="previewFrame mx-auto" [src]="previewUrl"></iframe>
+  </div>
+</div>
+
+<ng-template #forwardModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Forward</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="radio" name="forwardOption" id="keepRecipients" value="option1" checked>
+      <label class="form-check-label" for="keepRecipients">
+        As original
+      </label>
+      <small class="form-text text-muted">All recipients including CC and BCC will be maintained.</small>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="forwardOption" id="changeRecipient" value="option1">
+      <label class="form-check-label" for="changeRecipient">
+        Change recipient
+      </label>
+
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" [(ngModel)]="forwardRecipient">
+        <small class="form-text text-muted">Any other recipients including CC and BCC will be removed.</small>
+        {{forwardRecipient}}
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('forward')">Forward</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

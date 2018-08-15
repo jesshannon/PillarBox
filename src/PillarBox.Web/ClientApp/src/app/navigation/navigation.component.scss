@@ -1,0 +1,26 @@
+
+.navbar {
+    background-color: #ad291c;
+    padding: 0;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+
+    .navbar-brand {
+        background: url(/assets/logo.svg) no-repeat;
+        background-position-x: 10px;
+        padding-left: 100px;
+        padding-top: 15px;
+        font-weight: bold;
+        font-size: 2em;
+        height: 82px;
+        color: white;
+    }
+
+    .nav-link {
+        font-size:2em;
+        color:white;
+
+        &:hover {
+            color:#e0d0d0;
+        }
+    }
+}

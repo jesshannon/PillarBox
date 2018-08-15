@@ -1,0 +1,22 @@
+<div class="messages-panel" *ngIf="inboxDetails" (scroll)="panelScrolled($event)">
+    <a (click)="delete(); $event.preventDefault();" href="#" class="float-right fa fa-trash ml-2"></a>
+    <a routerLink="settings" class="float-right fa fa-cog"></a>
+    <h4>{{inboxDetails.parentPath}}</h4>
+    <h3>
+        <i class="fa fa-inbox"></i>{{inboxDetails.name}}
+    </h3>
+    <ul class="list-group" [@messageAddRemove]="inboxDetails.messages.items.length">
+        <li *ngFor="let message of inboxDetails.messages.items" class="list-group-item" [ngClass]="{'new': message.isNew}" routerLink="{{message.id}}">
+            <i class="fa fa-circle status"></i>
+            <span class="time float-right text-muted" title="{{message.dateSent | amLocal }}">{{message.dateSent | amTimeAgo}}</span>
+            <strong title="{{message.from}}">From: {{getName(message.from)}}</strong>
+            <br />
+            <strong title="{{message.to}}">To: {{getName(message.to)}}</strong>
+            <br /> {{message.subject}}
+            <span class="text-muted">{{message.intro}}</span>
+        </li>
+    </ul>
+</div>
+<div class="message-panel">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+$featureColor: #E73101;
+
+html,body {
+    height: 100%;
+    overflow:hidden;
+}
+
+a.fa {
+    color:#999999;
+    text-decoration:none;
+    font-size: 1.2em;
+    
+    &:hover {
+        color:black;
+    }
+}

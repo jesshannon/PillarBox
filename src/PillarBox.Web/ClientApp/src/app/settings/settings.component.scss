@@ -1,0 +1,17 @@
+.settings {
+    width:100%;
+    padding:1em;
+    background-color:#F8F8F8;
+    height:100%;
+    overflow:auto;
+
+    .settings-inner {
+        box-shadow:0 0 1em rgba(0,0,0,0.25);
+        border:solid 1px #CCCCCC;
+        padding: 1em;
+        max-width: 1000px;
+        background-color:white;
+
+    }
+
+}

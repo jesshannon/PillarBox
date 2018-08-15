@@ -1,0 +1,43 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    background-color:#F8F8F8;
+
+    .top {
+        box-shadow:0 0 1em rgba(0,0,0,0.25);
+        border:solid 1px #CCCCCC;
+        margin:1em 1em 0 1em;
+        .toolbar {
+            padding:10px;
+            background: darkgray;
+            .btn {
+                font-size:0.9em;
+            }
+        }
+        .headers {
+            background: white;
+            position: relative;
+            dl {
+                margin-bottom:0;
+            }
+        }
+    }
+
+}
+
+.previewContainer {
+    flex-grow:1;
+    width:100%;
+    overflow: hidden;
+    padding:0 1em 1em 1em;
+}
+
+.previewFrame {
+    height: 100%;
+    display: block;
+    background-color: white;
+    box-shadow: 0 0 1em rgba(0,0,0,0.25);
+    border: solid 1px #CCCCCC;
+    border-top: 0;
+}
