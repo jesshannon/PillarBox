@@ -18,11 +18,11 @@ Checkout a copy of this repository.
 ```
 git clone https://github.com/tshannon/PillarBox
 ```
-Navigate into `\src\PillarBox.Web`
+Navigate into `/src/PillarBox.Web`
 ```
-cd PillarBox\src\PillarBox.Web
+cd PillarBox/src/PillarBox.Web
 ```
-Run with dotnet
+Run with dotnet, if you see socket exception errors it may be neccessary to run from an Administrator prompt or with `sudo dotnet run`
 ```
 dotnet run
 ```
@@ -34,7 +34,8 @@ Once complete, go to http://localhost:5000/ in your browser.
 You should see something like this:
 ![Powershell screenshot](/screenshots/running-ps.png?raw=true)
 
-##Screenshots
+## Screenshots
+
 ![screenshot](/screenshots/screenshot02.png?raw=true)
 ![screenshot](/screenshots/screenshot01.png?raw=true)
 ![screenshot](/screenshots/screenshot03.png?raw=true)

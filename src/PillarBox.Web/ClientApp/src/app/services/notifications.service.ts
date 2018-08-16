@@ -3,6 +3,7 @@ import { MessageSummaryModel } from './../models/MessageSummaryModel.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import { HubConnection } from '@aspnet/signalr';
+import * as signalR from "@aspnet/signalr";
 import { NotificationModel } from '../models/NotificationModel.model';
 import { UserInboxModel } from '../models/UserInboxModel.model';
 import { InboxService } from './inbox.service';
@@ -27,7 +28,7 @@ export class NotificationsService {
 
     constructor() {
 
-        this.hubConnection = new HubConnection('/notifications');
+        this.hubConnection = new signalR.HubConnectionBuilder().withUrl("/notifications").build();
 
         this.ConnectToHub();
         this.connectionState.subscribe(s => this.connected = s);

@@ -21,10 +21,10 @@ namespace PillarBox.Web.Controllers
         {
             if (subscriptions.ContainsKey(Context.ConnectionId))
             {
-                await Groups.RemoveAsync(Context.ConnectionId, subscriptions[Context.ConnectionId]);
+                await Groups.RemoveFromGroupAsync(Context.ConnectionId, subscriptions[Context.ConnectionId]);
             }
             subscriptions.AddOrUpdate(Context.ConnectionId, id, (k,v)=> v);
-            await Groups.AddAsync(Context.ConnectionId, id);
+            await Groups.AddToGroupAsync(Context.ConnectionId, id);
         }
     }
 
