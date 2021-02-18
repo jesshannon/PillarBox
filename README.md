@@ -22,7 +22,7 @@ Navigate into `/src/PillarBox.Web`
 ```
 cd PillarBox/src/PillarBox.Web
 ```
-Run with dotnet, if you see socket exception errors it may be neccessary to run from an Administrator prompt or with `sudo dotnet run`
+Run with dotnet, if you see socket exception errors it may be necessary to run from an Administrator prompt or with `sudo dotnet run`
 ```
 dotnet run
 ```
@@ -30,9 +30,6 @@ dotnet run
 On first run it might take a few minutes to restore packages and modules.
 
 Once complete, go to http://localhost:5000/ in your browser.
-
-You should see something like this:
-![Powershell screenshot](/screenshots/running-ps.png?raw=true)
 
 ## Screenshots
 
