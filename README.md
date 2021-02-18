@@ -16,7 +16,7 @@ Open a shell or terminal window.
 
 Checkout a copy of this repository.
 ```
-git clone https://github.com/tshannon/PillarBox
+git clone https://github.com/jesshannon/PillarBox
 ```
 Navigate into `/src/PillarBox.Web`
 ```
@@ -43,7 +43,7 @@ If extending the Web API, then install [TypeScriptDefinitionGenerator](https://m
 
 ## Authors
 
-* **Thom Shannon** - *Initial work* - [tshannon](https://github.com/tshannon)
+* **Jess Shannon** - *Initial work* - [jesshannon](https://github.com/jesshannon)
 
 ## License
 
