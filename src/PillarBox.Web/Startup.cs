@@ -83,7 +83,7 @@ namespace PillarBox.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -97,21 +97,25 @@ namespace PillarBox.Web
             app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
+            if (!env.IsDevelopment())
             {
-                routes.MapRoute(
+                app.UseSpaStaticFiles();
+            }
+            
+            app.UseRouting();
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-
-                routes.MapRoute(
+                    pattern: "{controller}/{action=Index}/{id?}");
+                    
+                endpoints.MapControllerRoute(
                     name: "DefaultApi",
-                    template: "api/{controller=Home}/{action=Index}/{id?}");
-            });
+                    pattern: "api/{controller=Home}/{action=Index}/{id?}");
 
-            app.UseSignalR(routes => {
-                routes.MapHub<MessageHub>("/notifications");
+                endpoints.MapHub<MessageHub>("/notifications");
             });
 
 			app.UseSpa(spa =>
