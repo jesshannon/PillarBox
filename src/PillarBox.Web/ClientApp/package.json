@@ -24,7 +24,7 @@
     "@aspnet/signalr": "^1.0.2",
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "angular2-moment": "^1.8.0",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ng-bootstrap": "^1.6.3",
